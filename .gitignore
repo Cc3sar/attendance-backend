@@ -1,0 +1,22 @@
+# Ignorar archivos y directorios creados por Django
+*.log
+*.pot
+*.pyc
+__pycache__/
+local_settings.py
+db.sqlite3
+media/
+
+# Ignorar archivos creados por IDE y editores de texto
+*.swp
+*.swo
+*.bak
+*.pyc
+
+# Ignorar configuraciones de vscode
+.vscode/
+
+# Ignorar directorios creados por el sistema operativo
+.DS_Store
+Thumbs.db
+
