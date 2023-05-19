@@ -54,13 +54,13 @@ class ScheduleViewset(viewsets.ModelViewSet):
             entry_datetime__gte=start_of_month,
             entry_datetime__lt=end_of_month,
             entry_datetime__time__lte=time(8, 10)  # Filtrar llegadas antes o a las 8:10 am
-        ).values('user__dpi').annotate(count=Count('id')).order_by('count')
+        ).values('user__first_name').annotate(count=Count('id')).order_by('count')
 
         late_arrivals = Schedule.objects.filter(
             entry_datetime__gte=start_of_month,
             entry_datetime__lt=end_of_month,
             entry_datetime__time__gt=time(8, 10)  # Filtrar llegadas después de las 8:10 am
-        ).values('user__dpi').annotate(count=Count('id')).order_by('-count')
+        ).values('user__first_name').annotate(count=Count('id')).order_by('-count')
 
         # Obtener los DPI de los empleados y los valores de las llegadas tempranas y tardías
         early_employees = [arrival['user__dpi'] for arrival in early_arrivals]
