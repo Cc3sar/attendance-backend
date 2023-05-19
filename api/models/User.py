@@ -14,7 +14,7 @@ class User(AbstractUser):
     username = None
     dpi = models.CharField(max_length=13, unique=True)
     USERNAME_FIELD = 'dpi'
-    REQUIRED_FIELDS = ['first_name', 'last_name', 'email']
+    REQUIRED_FIELDS = ['first_name', 'last_name']
 
     objects = CustomUserManager()
 
