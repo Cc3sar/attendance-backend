@@ -10,7 +10,7 @@ class User(AbstractUser):
     """
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
-    email = models.EmailField(unique=True)
+    # email = models.EmailField(unique=True)
     username = None
     dpi = models.CharField(max_length=13, unique=True)
     USERNAME_FIELD = 'dpi'

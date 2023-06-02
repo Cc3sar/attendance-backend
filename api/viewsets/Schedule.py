@@ -63,10 +63,10 @@ class ScheduleViewset(viewsets.ModelViewSet):
         ).values('user__first_name').annotate(count=Count('id')).order_by('-count')
 
         # Obtener los DPI de los empleados y los valores de las llegadas tempranas y tardías
-        early_employees = [arrival['user__dpi'] for arrival in early_arrivals]
+        early_employees = [arrival['user__first_name'] for arrival in early_arrivals]
         early_counts = [arrival['count'] for arrival in early_arrivals]
 
-        late_employees = [arrival['user__dpi'] for arrival in late_arrivals]
+        late_employees = [arrival['user__first_name'] for arrival in late_arrivals]
         late_counts = [arrival['count'] for arrival in late_arrivals]
 
         # Crear el objeto de respuesta con las listas de llegadas tempranas y tardías
@@ -85,9 +85,9 @@ class ScheduleViewset(viewsets.ModelViewSet):
 
     @action(methods=['post'], detail=False)
     def rellenar_datos(self, request):
-        user_id = 2  # ID del usuario
+        user_id = 6  # ID del usuario
         start_date = datetime(2023, 5, 16)  # Fecha de inicio
-        end_date = datetime(2023, 5, 26)  # Fecha de fin
+        end_date = datetime(2023, 5, 25)  # Fecha de fin
         entry_time = datetime.strptime("8:11 AM", "%I:%M %p").time()  # Hora de entrada
 
         current_date = start_date
